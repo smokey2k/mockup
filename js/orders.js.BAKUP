@@ -1,0 +1,85 @@
+function genRandomStatus() {
+    const states = ['Megrendelés','Árajánlat','Mentés',];
+    return states[Math.floor(Math.random() * states.length)];
+}
+
+function genRandomWarrantyStatus() {
+    const warranty = {
+        '0': ['','transparent','black'],
+        '1': ['Lezárt','green','white'],
+        '2': ['Feldolgozás alatt','yellow','black'],
+        '3': ['Igényelt','red','white']
+    };
+    const keys = Object.keys(warranty);
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
+    const cellHtml = `<p style="background-color: ${warranty[randomKey][1]}; color: ${warranty[randomKey][2]};">${warranty[randomKey][0]}</p>`;
+    return cellHtml;
+}
+function genRandomNumber(lenght) {
+    let randomString = '';
+    for (let i = 0; i < lenght; i++) {
+      randomString += Math.floor(Math.random() * lenght);
+    }
+    return randomString;
+}
+  
+function genRandomCode(lenght) {
+    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let randomWord = '';
+    for (let i = 0; i < lenght; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      randomWord += characters[randomIndex];
+    }
+    return randomWord;
+}
+  
+function genRandomDate() {
+    const randomTimestamp = Math.random() * (new Date().getTime());
+    const randomDate = new Date(randomTimestamp);
+    const month = randomDate.getMonth() + 1; // Add 1 because month is zero-based
+    const day = randomDate.getDate();
+    const year = randomDate.getFullYear();
+    const shortFormat = `${year}/${month}/${day}`;
+    return shortFormat;
+}
+
+function genRandomTime() {
+    const hours = Math.floor(Math.random() * 24); // Random hour between 0 and 23
+    const minutes = Math.floor(Math.random() * 60); // Random minute between 0 and 59
+    const seconds = Math.floor(Math.random() * 60); // Random second between 0 and 59
+    const formattedHours = hours.toString().padStart(2, '0');
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+    const formattedSeconds = seconds.toString().padStart(2, '0');
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+}
+
+function genOrderPageLink() {
+    return 'Megnéz'
+}
+  
+function genOrderHistory() {
+    let rowCells = [
+        () => genRandomNumber(10),
+        () => genRandomStatus(),
+        () => genRandomWarrantyStatus(),
+        () => genRandomDate(),
+        () => genRandomTime(),
+        () => genOrderPageLink()
+    ];
+    const table = document.getElementById('orders-table');
+    for (let i = 0; i < 100; i++) {
+        let row = document.createElement('tr');
+        for (let j = 0; j < rowCells.length; j++) {
+            let cell = document.createElement('td');
+            if (j == 2) {
+                cell.innerHTML  = rowCells[j]();    
+            } else {
+                cell.textContent = rowCells[j]();
+            }
+            row.appendChild(cell);
+        }
+        table.appendChild(row);
+    }
+}
+
+export { genOrderHistory };

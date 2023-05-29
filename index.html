@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="media/favicon.svg" type="image/x-icon">
+    <!-- <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script> -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
+        }
+      }
+    </script>
+    <script src="js/main.js" type="module" defer></script>
+    <script src="./js/3dscene.js" type="module" defer></script>    
+    </script>
+
+</head>
+    <body>
+        <div id="wrapper">
+            <div id="container-left">
+                <div class="container-logo">
+                    <img id="vertex-logo" src="media/vertex-logo.svg" alt="Vertex Bútor Kft."/>
+                </div>
+                <div id="left"></div>
+                <div data-page="admin" id="admin" class="tool side-button side-button-red">Admin</div>
+                <div data-page="landing" id="backtosite" class="tool side-button side-button-green">Vissza a weboldalra</div>
+            </div>
+            <div id="contanier-right">
+                <div id="scene">
+                </div>
+                <div id="right"></div>
+            </div>
+        </div>
+    </body>
+</html>

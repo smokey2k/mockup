@@ -1,0 +1,43 @@
+#orders-header,#orders-search {
+  padding-bottom: 1em;
+  width: 100%;
+}
+
+#orders-main {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    overflow: auto;
+}
+
+#orders-table {
+    width: 100%;
+    overflow: auto;
+    border-collapse: collapse;
+}
+
+.orders-table-header > tr, .orders-table-body > tr {
+    text-align: left;
+    white-space: nowrap;
+}
+
+.orders-table-header > tr {
+  background-color: rgb(61, 75, 96);
+  color: white;
+  position: sticky;
+  top: 0;
+  height: 3em;
+}
+
+.orders-table-header > tr > th {
+  padding: 0.5em;
+  padding-bottom: 1em;
+}
+
+.orders-table-body > tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.orders-table-body > tr:nth-child(odd) {
+  background-color: #ffffff;
+}
